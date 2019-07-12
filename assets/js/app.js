@@ -32,7 +32,7 @@ var char= [
 ]
 
    
-    
+var interval;   
 var arr;
 var questionOnScreen;
 var win = 0;
@@ -69,7 +69,7 @@ $("#forth").on("click", function(){
 }
 function gameStart(){
     arr = shuffle(char);
-    n = Math.floor(Math.random() * 4);
+    
     console.log(n);
     next = 0;
     gameNext();
@@ -78,6 +78,7 @@ function gameStart(){
 
 function gameNext(){
     startCountDown();
+    n = Math.floor(Math.random() * 4);
     questionOnScreen = arr[n].question;
     console.log(questionOnScreen);
     $("#theQuestion").text("Q1: " + questionOnScreen);
@@ -94,8 +95,8 @@ function gameNext(){
     $("#forth").text(arr[3].amswer);
 }
 function startCountDown(){
-    var counter = 30;
-    var interval = setInterval(function() {
+    var counter = 10;
+    interval = setInterval(function() {
         counter--;
         // Display 'counter' wherever you want to display it.
         $("#countDown").text("You have " + counter + "s remain!");
@@ -122,12 +123,14 @@ function onClick(n1){
         $("#images").attr("src",arr[n1].right);
         //console.log(arr[n2].right);
         win ++;
-        setTimeout(gameNext(), 2000);
+        clearInterval(interval);  
+        setTimeout(gameNext, 2000);
     }else{
         $("#images").attr("src",arr[n1].wrong);
         $(".forms").append(`<p> The answer is : ` + arr[n1].amswer + ` do better next time</p>`);
         //console.log(arr[n2].right);
         times --;
-        setTimeout(gameNext(), 2000);
+        clearInterval(interval);  
+        setTimeout(gameNext, 2000);
     }
 }
