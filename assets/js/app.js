@@ -78,6 +78,7 @@ function gameStart(){
 
 function gameNext(){
     startCountDown();
+    
     n = Math.floor(Math.random() * 4);
     questionOnScreen = arr[n].question;
     console.log(questionOnScreen);
@@ -85,6 +86,8 @@ function gameNext(){
     console.log(questionOnScreen);
    
     $("ol").removeClass( "hidden" );
+    $("#images").addClass( "hidden" );
+    $("#rightAnswer").addClass("hidden");
             
     $("#first").text(arr[0].amswer);
     
@@ -102,6 +105,7 @@ function startCountDown(){
         $("#countDown").text("You have " + counter + "s remain!");
         if (counter == 0) {
             // Display a login box
+            $("#rightAnswer").text( arr[n].amswer );
             clearInterval(interval);    
             gameNext();
         }
@@ -109,8 +113,13 @@ function startCountDown(){
 }
 
 function onClick(n1){
-    debugger;
+   // debugger;
+
+   event.preventDefault();
+   clearInterval(interval); 
     $("ol").addClass( "hidden" );
+    $("#images").removeClass( "hidden" );
+    $("#rightAnswer").removeClass("hidden");
     if( !selected ){
         selected = true;
     } else {
@@ -123,14 +132,12 @@ function onClick(n1){
         $("#images").attr("src",arr[n1].right);
         //console.log(arr[n2].right);
         win ++;
-        clearInterval(interval);  
-        setTimeout(gameNext, 2000);
+        setTimeout(gameNext,5000);
     }else{
         $("#images").attr("src",arr[n1].wrong);
-        $(".forms").append(`<p> The answer is : ` + arr[n1].amswer + ` do better next time</p>`);
+        $("#rightAnswer").text( arr[n].amswer );
         //console.log(arr[n2].right);
         times --;
-        clearInterval(interval);  
-        setTimeout(gameNext, 2000);
+        setTimeout(gameNext,5000);
     }
 }
