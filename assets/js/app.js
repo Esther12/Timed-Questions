@@ -31,7 +31,7 @@ var char= [
 
 ]
 
-   
+var clickSound = $("#myAudio")   ;
 var interval;   
 var arr;
 var questionOnScreen;
@@ -44,21 +44,26 @@ gameStart();
 
 $("#first").on("click", function(){
     //debugger;
+    clickSound[0].play();
     event.preventDefault();
     onClick(0);
     console.log(times,win);
     });
 $("#second").on("click", function(){
+    
     event.preventDefault();
     onClick(1);
+    clickSound[0].play();
     console.log(times,win);
     });
 $("#third").on("click", function(){
+    clickSound[0].play();
     event.preventDefault();
     onClick(2);
     console.log(times,win);
     });
 $("#forth").on("click", function(){
+    clickSound[0].play();
     event.preventDefault();
     onClick(3);
     console.log(times,win);

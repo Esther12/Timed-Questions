@@ -5,3 +5,12 @@
     position: relative;
     top:100px;
 }
+body{
+    background-image: url("/assets/images/background-game.jpg");
+    background-size: cover;
+    color: wheat;
+}
+img{
+    width: 500px;
+    height: 250px;
+}
