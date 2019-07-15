@@ -46,6 +46,7 @@ $("#first").on("click", function(){
     //debugger;
     event.preventDefault();
     onClick(0);
+    $()
     console.log(times,win);
     });
 $("#second").on("click", function(){
@@ -93,8 +94,9 @@ function gameNext(){
     $("#theQuestion").text("Q1: " + questionOnScreen);
     console.log(questionOnScreen);
    
-    $("ol").removeClass( "hidden" );
+    $(".list-group").removeClass( "hidden" );
     $("#images").addClass( "hidden" );
+    $("#images").attr("src"," ");
     $("#rightAnswer").addClass("hidden");
             
     $("#first").text(arr[0].amswer);
@@ -115,9 +117,13 @@ function startCountDown(){
             // Display a login box
             debugger;
             times--;
-            $("#rightAnswer").text( arr[n].amswer );
+            $("#rightAnswer").removeClass("hidden");
+            $("#answers").text( arr[n].amswer );
             clearInterval(interval);    
-            gameNext();
+            setTimeout(function(){
+                console.log("You are wrong")
+                gameNext();
+            },2000);
         }
     }, 1000);
 }
@@ -127,14 +133,15 @@ function onClick(n1){
 
    event.preventDefault();
    clearInterval(interval); 
-    $("ol").addClass( "hidden" );
+    $(".list-group").addClass( "hidden" );
     $("#images").removeClass( "hidden" );
     $("#rightAnswer").removeClass("hidden");
     if( !selected ){
         selected = true;
-    } else {
+    } 
+    /*else {
         return; //leave the function
-    }
+    }*/
     
    console.log(arr[n1].amswer);
    var answer = arr[n1].question;
@@ -142,15 +149,21 @@ function onClick(n1){
         $("#images").attr("src",arr[n1].right);
         //console.log(arr[n2].right);
         win ++;
-        clearInterval(interval); 
-        setTimeout(function(){gameNext();},1000);
+        //clearInterval(interval); 
+        setTimeout(function(){
+            console.log("You are right")
+            gameNext();
+        },3000);
     }else{
         debugger;
         $("#images").attr("src",arr[n1].wrong);
-        $("#rightAnswer").text( arr[n].amswer );
+        $("span").text( arr[n].amswer );
         //console.log(arr[n2].right);
         times --;
-        clearInterval(interval); 
-        setTimeout(function(){gameNext();},1000);
+        //clearInterval(interval); 
+        setTimeout(function(){
+            console.log("You are wrong")
+            gameNext();
+        },3000);
     }
 }

@@ -10,12 +10,16 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-6 mx-auto forms text-center">
+        <div class="col-6 m-auto forms text-center">
             <!-- <div class="col-8 m-auto">
                 <button class="btn btn-info">Start</button>
             </div> -->
             <h1 class="text-center"> Trivia Game!! </h1>
-            <p class="text-center" id="countDown"> You have 30s remain!</p>
+            <div class= "row d-flex justify-content-between">
+                <p>Remaining lifes: <span id="lives"> </span></p>
+                <p>Wins: <span id = "Wins"></span> </p>
+            </div>
+            <p class="text-center" id="countDown"> You have 20s remain!</p>
             <h4 class="text-center" id="theQuestion"></h4>
             <div class="list-group">
                 <button id="first" type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
@@ -24,7 +28,7 @@
                 <button id="forth" type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
               </div>
             <img class = "mx-auto" src= "#" id="images"/>
-            <p>The right answer is <span id="rightAnswer"></span> do better next time!!</p>
+            <p id="rightAnswer">The right answer is <span id="answers"></span> do better next time!!</p>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
