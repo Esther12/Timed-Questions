@@ -5,24 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css"> 
     <title>Document</title>
 </head>
 <body>
     <div class="container">
-        <div class="col-8 m-auto forms">
+        <div class="col-6 mx-auto forms text-center">
             <!-- <div class="col-8 m-auto">
                 <button class="btn btn-info">Start</button>
             </div> -->
-            <h1 class="row text-center"> Trivia Game!! </h1>
+            <h1 class="text-center"> Trivia Game!! </h1>
             <p class="text-center" id="countDown"> You have 30s remain!</p>
             <h4 class="text-center" id="theQuestion"></h4>
-            <ol class="text-center mx-auto" > 
-                <li id="first">A</li>
-                <li id="second">A</li>
-                <li id="third">A</li>
-                <li id="forth">A</li>
-            </ol>
+            <div class="list-group">
+                <button id="first" type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+                <button id="second" type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+                <button id="third" type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+                <button id="forth" type="button" class="list-group-item list-group-item-action">Vestibulum at eros</button>
+              </div>
             <img class = "mx-auto" src= "#" id="images"/>
             <p>The right answer is <span id="rightAnswer"></span> do better next time!!</p>
         </div>

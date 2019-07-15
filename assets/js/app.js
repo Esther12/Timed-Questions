@@ -44,16 +44,24 @@ gameStart();
 
 $("#first").on("click", function(){
     //debugger;
+    event.preventDefault();
     onClick(0);
+    console.log(times,win);
     });
 $("#second").on("click", function(){
+    event.preventDefault();
     onClick(1);
+    console.log(times,win);
     });
 $("#third").on("click", function(){
+    event.preventDefault();
     onClick(2);
+    console.log(times,win);
     });
 $("#forth").on("click", function(){
+    event.preventDefault();
     onClick(3);
+    console.log(times,win);
     });
 
 
@@ -70,7 +78,7 @@ $("#forth").on("click", function(){
 function gameStart(){
     arr = shuffle(char);
     
-    console.log(n);
+    console.log(arr);
     next = 0;
     gameNext();
     
@@ -105,6 +113,8 @@ function startCountDown(){
         $("#countDown").text("You have " + counter + "s remain!");
         if (counter == 0) {
             // Display a login box
+            debugger;
+            times--;
             $("#rightAnswer").text( arr[n].amswer );
             clearInterval(interval);    
             gameNext();
@@ -132,12 +142,15 @@ function onClick(n1){
         $("#images").attr("src",arr[n1].right);
         //console.log(arr[n2].right);
         win ++;
-        setTimeout(gameNext,5000);
+        clearInterval(interval); 
+        setTimeout(function(){gameNext();},1000);
     }else{
+        debugger;
         $("#images").attr("src",arr[n1].wrong);
         $("#rightAnswer").text( arr[n].amswer );
         //console.log(arr[n2].right);
         times --;
-        setTimeout(gameNext,5000);
+        clearInterval(interval); 
+        setTimeout(function(){gameNext();},1000);
     }
 }
