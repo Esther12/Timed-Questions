@@ -46,7 +46,6 @@ $("#first").on("click", function(){
     //debugger;
     event.preventDefault();
     onClick(0);
-    $()
     console.log(times,win);
     });
 $("#second").on("click", function(){
@@ -78,16 +77,25 @@ $("#forth").on("click", function(){
 }
 function gameStart(){
     arr = shuffle(char);
-    
+    times = char.length;
     console.log(arr);
     next = 0;
+    $("#lives").text(times);
+    $("#Wins").text(win);
     gameNext();
     
 }
 
 function gameNext(){
     startCountDown();
-    
+    if(times == 0){
+        clearInterval(interval); 
+        setTimeout(function(){
+        alert("End of the Game!!!");
+            console.log("You are right")
+            gameStart();
+        },500);
+    }
     n = Math.floor(Math.random() * 4);
     questionOnScreen = arr[n].question;
     console.log(questionOnScreen);
@@ -106,6 +114,8 @@ function gameNext(){
     $("#third").text(arr[2].amswer);
 
     $("#forth").text(arr[3].amswer);
+    $("#lives").text(times);
+    $("#Wins").text(win);
 }
 function startCountDown(){
     var counter = 10;
@@ -115,34 +125,33 @@ function startCountDown(){
         $("#countDown").text("You have " + counter + "s remain!");
         if (counter == 0) {
             // Display a login box
-            debugger;
+            //debugger;
             times--;
             $("#rightAnswer").removeClass("hidden");
             $("#answers").text( arr[n].amswer );
             clearInterval(interval);    
             setTimeout(function(){
-                console.log("You are wrong")
+                console.log("You are wrong");
                 gameNext();
-            },2000);
+            },1000);
         }
     }, 1000);
 }
 
 function onClick(n1){
    // debugger;
-
+   if( !selected ){
+    selected = true;
+} 
    event.preventDefault();
    clearInterval(interval); 
     $(".list-group").addClass( "hidden" );
     $("#images").removeClass( "hidden" );
     $("#rightAnswer").removeClass("hidden");
-    if( !selected ){
-        selected = true;
-    } 
+    
     /*else {
         return; //leave the function
-    }*/
-    
+    }*/    
    console.log(arr[n1].amswer);
    var answer = arr[n1].question;
    if(questionOnScreen == answer){// this means you got the right answer!!
@@ -153,9 +162,10 @@ function onClick(n1){
         setTimeout(function(){
             console.log("You are right")
             gameNext();
-        },3000);
-    }else{
-        debugger;
+        },1000);
+    }
+    else{
+       // debugger;
         $("#images").attr("src",arr[n1].wrong);
         $("span").text( arr[n].amswer );
         //console.log(arr[n2].right);
@@ -164,6 +174,7 @@ function onClick(n1){
         setTimeout(function(){
             console.log("You are wrong")
             gameNext();
-        },3000);
+        },1000);
     }
 }
+
